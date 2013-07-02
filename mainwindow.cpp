@@ -4,6 +4,9 @@
 #include <QtGlobal>
 #include <QTextStream>
 #include <QMessageBox>
+#include <cstdlib>
+
+#define random(x) (rand()%x)
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -31,18 +34,25 @@ void MainWindow::on_BtnSetting_clicked()
 void MainWindow::on_BtnNext_clicked()
 {
     QMessageBox msg;
-    if (i <= tmpList.count() - 1)
+    if (mode == 0)
     {
-     ui->txtWord->setText(tmpList[i]);
-    i++;
-    } else
+        if (i <= tmpList.count() - 1)
+        {
+         ui->txtWord->setText(tmpList[i]);
+        i++;
+        } else
+        {
+            msg.setWindowTitle("Inform");
+            msg.setInformativeText("You have finished all the words, return to the first one. ");
+            msg.exec();
+            i = 0;
+            ui->txtWord->setText(tmpList[i]);
+        }
+    } else if (mode == 1)
     {
-        msg.setWindowTitle("Inform");
-        msg.setInformativeText("You have finished all the words, return to the first one. ");
-        msg.exec();
-        i = 0;
+        i = random(tmpList.count());
         ui->txtWord->setText(tmpList[i]);
-    }
+    } else msg.setInformativeText("Error!");
 }
 
 void MainWindow::receiveData(QString data)
@@ -68,4 +78,19 @@ void MainWindow::getDataFromFile(QString dir)
             tmpList << line;
         }
     }
+}
+
+void MainWindow::on_actionRan_triggered()
+{
+    mode = 1;
+}
+
+void MainWindow::on_actionSeq_triggered()
+{
+    mode = 0;
+}
+
+void MainWindow::on_actionFile_Location_triggered()
+{
+    settingDlg.showNormal();
 }

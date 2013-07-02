@@ -108,6 +108,46 @@
     </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>511</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <widget class="QMenu" name="menuMode">
+     <property name="title">
+      <string>Mode</string>
+     </property>
+     <addaction name="actionSeq"/>
+     <addaction name="actionRan"/>
+    </widget>
+    <addaction name="actionFile_Location"/>
+    <addaction name="menuMode"/>
+   </widget>
+   <addaction name="menuSettings"/>
+  </widget>
+  <action name="actionFile_Location">
+   <property name="text">
+    <string>File Location</string>
+   </property>
+  </action>
+  <action name="actionSeq">
+   <property name="text">
+    <string>Seq</string>
+   </property>
+  </action>
+  <action name="actionRan">
+   <property name="text">
+    <string>Rand</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

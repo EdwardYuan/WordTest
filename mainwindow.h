@@ -22,8 +22,15 @@ private slots:
     void on_BtnNext_clicked();
     void receiveData(QString data);
 
+    void on_actionRan_triggered();
+
+    void on_actionSeq_triggered();
+
+    void on_actionFile_Location_triggered();
+
 private:
     Ui::MainWindow *ui;
+    int mode;
     void getDataFromFile(QString dir);
 public:
     SettingDlg settingDlg;
