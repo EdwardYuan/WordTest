@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "settingdlg.h"
+#include <QKeyEvent>
+
+//#include "settingdlg.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,7 +22,7 @@ private slots:
     void on_BtnSetting_clicked();
 
     void on_BtnNext_clicked();
-    void receiveData(QString data);
+//    void receiveData(QString data);
 
     void on_actionRan_triggered();
 
@@ -28,15 +30,22 @@ private slots:
 
     void on_actionFile_Location_triggered();
 
+    void on_btnPrev_clicked();
+
 private:
     Ui::MainWindow *ui;
     int mode;
     void getDataFromFile(QString dir);
+    void DoPrev();
+    void DoNext();
+    void openFileLocation();
+protected:
+    void KeyPressEvent(QKeyEvent *e);
 public:
-    SettingDlg settingDlg;
+//    SettingDlg settingDlg;
     QString directory;
     QStringList tmpList;
-    int i;
+    int i, j;
 };
 
 #endif // MAINWINDOW_H
