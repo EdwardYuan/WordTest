@@ -134,6 +134,7 @@
     </widget>
     <addaction name="actionFile_Location"/>
     <addaction name="menuMode"/>
+    <addaction name="actionExit"/>
    </widget>
    <addaction name="menuSettings"/>
   </widget>
@@ -144,13 +145,27 @@
    </property>
   </action>
   <action name="actionSeq">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>&amp;Sequence</string>
    </property>
   </action>
   <action name="actionRan">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>&amp;Random</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>

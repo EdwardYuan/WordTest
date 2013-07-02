@@ -35,6 +35,8 @@ private slots:
 
     void on_btnPrev_clicked();
 
+    void on_actionExit_triggered();
+
 private:
     Ui::MainWindow *ui;
     QLabel *curFile;

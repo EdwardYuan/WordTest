@@ -160,9 +160,6 @@ void MainWindow::on_actionSeq_triggered()
 void MainWindow::on_actionFile_Location_triggered()
 {
     openFileLocation();
-//    curFile->setMinimumSize(150, 20); // 设置标签最小大小
-//    curFile->setFrameShape(QFrame::WinPanel); // 设置标签形状
-//    curFile->setFrameShadow(QFrame::Sunken); // 设置标签阴影
 }
 
 void MainWindow::openFileLocation()
@@ -189,3 +186,8 @@ void MainWindow::KeyPressEvent(QKeyEvent *e)
 
 
 
+
+void MainWindow::on_actionExit_triggered()
+{
+    close();
+}
