@@ -137,6 +137,7 @@
    </widget>
    <addaction name="menuSettings"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionFile_Location">
    <property name="text">
     <string>&amp;File Location</string>

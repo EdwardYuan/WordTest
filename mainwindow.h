@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QKeyEvent>
+#include <QLabel>
+
+#define MAX_WORD_COUNT 1000
 
 //#include "settingdlg.h"
 
@@ -34,18 +37,21 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QLabel *curFile;
     int mode;
     void getDataFromFile(QString dir);
     void DoPrev();
     void DoNext();
     void openFileLocation();
+    void init_rand_arr();
 protected:
     void KeyPressEvent(QKeyEvent *e);
 public:
 //    SettingDlg settingDlg;
     QString directory;
     QStringList tmpList;
-    int i, j;
+    int i, j, k;  // k is the index of array rand_j
+    int rand_j[MAX_WORD_COUNT];
 };
 
 #endif // MAINWINDOW_H

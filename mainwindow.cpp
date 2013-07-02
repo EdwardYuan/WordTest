@@ -15,9 +15,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     mode = 0;
+    curFile = new QLabel;
     ui->setupUi(this);
     ui->txtWord->setText("Welcome, now let's start the test, A U READY? ");
     i = 0;
+    k = 0;
+    init_rand_arr();
 //    QObject::connect(&settingDlg, SIGNAL(my_setting_path(QString)), this, SLOT(receiveData(QString)));
 //    directory = "/home/edward/Desktop/GRE/wordlist16.txt";
     getDataFromFile(directory);
@@ -26,6 +29,12 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::init_rand_arr()
+{
+    for (int m = 0; m < MAX_WORD_COUNT; m++)
+        rand_j[m] = 0;
 }
 
 void MainWindow::on_BtnSetting_clicked()
@@ -74,7 +83,9 @@ void MainWindow::DoPrev()
 
     } else if (mode == 1)
     {
-        ui->txtWord->setText(tmpList[j]);
+        if ((k > -1) && (k < tmpList.count()))
+            ui->txtWord->setText(tmpList[rand_j[k-1]]);
+        k--;
     }
     ui->txtWord->setAlignment(Qt::AlignHCenter);
 }
@@ -127,6 +138,8 @@ void MainWindow::DoNext()
     {
         i = random(tmpList.count());
         j = i;
+        rand_j[k] = j;
+        k++;
         ui->txtWord->setText(tmpList[i]);
     } else msg.setInformativeText("Error!");
     ui->txtWord->setAlignment(Qt::AlignHCenter);
@@ -135,16 +148,21 @@ void MainWindow::DoNext()
 void MainWindow::on_actionRan_triggered()
 {
     mode = 1;
+    i = j = k = 0;
 }
 
 void MainWindow::on_actionSeq_triggered()
 {
     mode = 0;
+    i = j = k = 0;
 }
 
 void MainWindow::on_actionFile_Location_triggered()
 {
     openFileLocation();
+//    curFile->setMinimumSize(150, 20); // 设置标签最小大小
+//    curFile->setFrameShape(QFrame::WinPanel); // 设置标签形状
+//    curFile->setFrameShadow(QFrame::Sunken); // 设置标签阴影
 }
 
 void MainWindow::openFileLocation()
@@ -156,6 +174,8 @@ void MainWindow::openFileLocation()
                        getDataFromFile(directory);
      //                  ui->txtPath->setText(directory);
                    }
+   ui->statusBar->addWidget(curFile);
+   curFile->setText(directory);
 }
 
 void MainWindow::KeyPressEvent(QKeyEvent *e)
