@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QString>
+#include <QMessageBox>
 
 namespace Ui {
 class SettingDlg;
@@ -26,6 +27,7 @@ private slots:
 
 private:
     Ui::SettingDlg *ui;
+    QMessageBox msg;
 
 signals:
     void my_setting_path(QString);

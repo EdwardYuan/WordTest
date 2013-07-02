@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->BtnMode->setEnabled(false);
     i = 0;
     QObject::connect(&settingDlg, SIGNAL(my_setting_path(QString)), this, SLOT(receiveData(QString)));
-    directory = "/home/edward/dic.txt";
+    directory = "/home/edward/Desktop/GRE/wordlist16.txt";
     getDataFromFile(directory);
 }
 
@@ -53,7 +53,7 @@ void MainWindow::receiveData(QString data)
 
 void MainWindow::getDataFromFile(QString dir)
 {
-    QFile wordFile(directory);
+    QFile wordFile(dir);
     if(wordFile.exists())
     {
         if(!wordFile.open(QIODevice::ReadOnly))
