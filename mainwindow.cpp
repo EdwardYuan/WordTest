@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
     i = 0;
     k = 0;
     init_rand_arr();
+    ui->actionRan->setChecked(false);
+    ui->actionSeq->setChecked(true);
 //    QObject::connect(&settingDlg, SIGNAL(my_setting_path(QString)), this, SLOT(receiveData(QString)));
 //    directory = "/home/edward/Desktop/GRE/wordlist16.txt";
     getDataFromFile(directory);
@@ -148,12 +150,34 @@ void MainWindow::DoNext()
 void MainWindow::on_actionRan_triggered()
 {
     mode = 1;
+//    if (ui->actionRan->isChecked() == true)
+//    {
+//        mode = 0;
+//        ui->actionRan->setChecked(false);
+//        ui->actionSeq->setChecked(true);
+//    } else
+//    {
+//        mode = 1;
+//        ui->actionRan->setChecked(true);
+//        ui->actionSeq->setChecked(false);
+//    }
     i = j = k = 0;
 }
 
 void MainWindow::on_actionSeq_triggered()
 {
     mode = 0;
+//    if (ui->actionSeq->isChecked() == true)
+//    {
+//        mode = 1;
+//        ui->actionRan->setChecked(true);
+//        ui->actionSeq->setChecked(false);
+//    } else
+//    {
+//        mode = 1;
+//        ui->actionSeq->setChecked(true);
+//        ui->actionRan->setChecked(false);
+//    }
     i = j = k = 0;
 }
 
